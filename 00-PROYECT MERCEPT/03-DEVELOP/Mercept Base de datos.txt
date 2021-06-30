@@ -1,0 +1,334 @@
+create table usuario(
+  id int4 not null,
+  usuario varchar(100) not null,
+  contraseña varchar(100) not null,
+  primary key (id)
+);
+
+create table cliente (
+  id int4 not null,
+  id_usuario int4 not null,
+  nombre varchar(100) not null ,
+  apellido varchar(100) not null,
+  direccion varchar(100) not null,
+  telefono int4 not null,
+  usuario varchar (100) not null,
+  primary key (id),
+  constraint fk_usu foreign key (id_usuario) references usuario(id)
+);
+
+create table pedido(
+    id int4 not null,
+    id_cliente int4 not null ,
+    fecha date not null,
+    primary key (id),
+    constraint fk_clie_pe foreign key (id_cliente) references cliente(id)
+
+);
+
+create table factura(
+    id int4 not null,
+    id_cliente int4 not null,
+    id_pedido int4 not null,
+    num_factura varchar(100) not null,
+    fecha date not null,
+    primary key (id),
+    constraint fk_clie foreign key (id_cliente) references cliente(id),
+    foreign key (id_pedido) references pedido(id)
+);
+create table empresa(
+    id int4 not null,
+    nomb_empresa varchar(100) not null,
+    direccion varchar(100) not null ,
+    telefono int4 not null,
+    email varchar(100) not null,
+    primary key (id)
+);
+create table tamaño(
+    id int4 not null,
+    tamaño varchar(100) not null,
+    primary key (id)
+);
+
+create table categoria(
+    id int4 not null,
+    nomb_categoria varchar(100) not null,
+    descripcion varchar(200) not null,
+    primary key (id)
+);
+
+create table producto(
+    id int4 not null,
+    id_categoria int4 not null,
+    id_tamaño int4 not null,
+    id_empresa int4 not null,
+    nomb_producto varchar(100) not null,
+    marca varchar(100) not null,
+    modelo varchar(100) not null,
+    precio int4 not null,
+    primary key (id),
+    constraint uk_product UNIQUE (id_categoria,id_tamaño,id_empresa),
+    constraint fk_empre_produc foreign key (id_empresa) references empresa(id),
+    constraint fk_tamaño_pro foreign key (id_tamaño) references tamaño(id),
+    constraint fk_categori_produ foreign key (id_categoria) references categoria(id)
+);
+
+create table inventario(
+    id int4 not null,
+    id_producto int4 not null,
+    existencia varchar(70) not null,
+    id_cliente  int4 not null,
+    primary key (id),
+    constraint uk_invet UNIQUE (id_producto,id_cliente),
+    constraint fk_produ foreign key (id_producto) references  producto(id),
+    foreign key (id_cliente) references cliente(id)
+);
+
+create table  detalle_factura(
+    id int4 not null,
+    id_pedido int4 not null,
+    cantidad int4 not null,
+    precio_venta int4 not null,
+    primary key (id),
+    constraint fk_dell_fact foreign key  (id_pedido) references pedido(id)
+
+);
+
+create table catalogo(
+    id int4 not null,
+    nomb_catalogo varchar(100) not null,
+    imagen_url varchar(100) not null,
+    primary key (id)
+);
+
+create table catalogo_producto(
+    id int4 not null,
+    id_catalogo int4 not null,
+    id_producto int4 not null,
+    nombre_catalogo varchar(255) not null,
+    primary key (id),
+    foreign key (id_catalogo) references catalogo(id),
+    foreign key (id_producto) references producto(id)
+);
+
+
+/*DML Y DDL*/
+/*Ingreso de datos Andryu*/
+/*DATOS USUARIO*/
+insert into usuario
+values('1','Miguel_Santodomingo',md5('miguel123'));
+insert into usuario
+values('2','Kevin_Santos',md5('Kevin45'));
+insert into usuario
+values('3','Julian_marquez',md5('marquez46'));
+insert into usuario
+values('4','Dilan_Gonzales',md5('Dilan756'));
+insert into usuario
+values('5','Erika_Ramirez',md5('Erika-ramirez125'));
+select * from usuario;
+/*DATOS CLIENTE*/
+insert into cliente
+values ('1','1','miguel','santodomingo','Cll-71-M-49','311547861','Miguel_Santodomingo');
+insert into cliente
+values ('2','2','Kevin','santos','Cll-30-j-30','32249871','Kevin_Santos');
+insert into cliente
+values ('3','3','Julian','marquez','Cra-7-ñ-75','356871256','Julian_marquez');
+insert into cliente
+values ('4','5','Dilan','Gonzales','Cra-4-85','320156789','Dilan_Gonzales');
+insert into cliente
+values ('5','4','Erika','Ramirez','Cra-78-98','311840871','Erika_Ramirez');
+select * from cliente;
+
+/*DATOS EMPRESA*/
+Insert into empresa
+values ('1','Madecenter','Calle 59 No. 27 - 35','6223452','madecenter@mercept.co');
+Insert into empresa
+values ('2','Los Santos','Calle 20 No. 22 - 27','8845585','los-santosc@mercept.co');
+Insert into empresa
+values ('3','San Pedro','Carrera  5 No. 3 -74  centro','8241832','sanpedro759@mercept.co');
+Insert into empresa
+values ('4','Los Pinares','Calle 25 No. 4 - 38','5847711','Lospiinars@mercept.co');
+Insert into empresa
+values ('5','DecoMaderas','Carrera 7A No. 32','3305040','decomade@mercept.co');
+select* from empresa;
+
+/*DATOS TAMAÑO*/
+Insert into tamaño
+values ('1','50');
+Insert into tamaño
+values ('2','35');
+Insert into tamaño
+values ('3','12');
+Insert into tamaño
+values ('4','11');
+Insert into tamaño
+values ('5','22');
+select * from tamaño;
+
+/*DATOS CATEGORIA*/
+insert into categoria
+values ('1','Maderas','Espacio donde se almacena todos los tipos de Maderas');
+insert into categoria
+values ('2','Armarios','Espacio donde se almacena todos los de Armarios  y su descripcion');
+insert into categoria
+values ('3','Sillas','Espacio donde se almacena todos los tipo de Sillas y su descripcion');
+insert into categoria
+values ('4','Mesas','Espacio donde se almacena todos los tipo de Mesas y su descripcion');
+insert into categoria
+values ('5','Decoraciones','Espacio de decoracion en todo tipo de madera');
+select * from categoria;
+
+/*DATOS PRODUCTO*/
+insert into producto
+values ('1','2','3','4','Mesa','--','--','120000');
+insert into producto
+values ('2','1','5','3','Escritorio','--','--','200000');
+insert into producto
+values ('3','4','1','2','Repisa','--','--','50000');
+insert into producto
+values ('4','3','2','1','Mesita_de_cafe','--','--','140000');
+insert into producto
+values ('5','5','4','5','Carro_madera','--','--','70000');
+select * from producto;
+
+/*DATOS CATALOGO*/
+insert into catalogo
+values ('1','Maderas','--');
+insert into catalogo
+values ('2','Aluminios','--');
+insert into catalogo
+values ('3','Laminados','--');
+insert into catalogo
+values ('4','Herrajes','--');
+insert into catalogo
+values ('5','Cantos','--');
+select * from catalogo;
+
+/*DATOS INVENTARIO*/
+insert into inventario
+values ('2','1','existe','1');
+insert into inventario
+values ('3','5','no existe','2');
+insert into inventario
+values ('4','3','existe','3');
+insert into inventario
+values ('5','4','no existe','4');
+insert into inventario
+values ('1','5','existe','5');
+select * from inventario;
+/*DATOS PEDIDO*/
+insert into pedido
+values ('1','2','15-1-21');
+insert into pedido
+values ('2','3','15-1-21');
+insert into pedido
+values ('3','4','15-1-21');
+insert into pedido
+values ('4','5','15-1-21');
+insert into pedido
+values ('5','1','15-1-21');
+select * from pedido;
+/*DATOS FACTURA*/
+insert into factura
+values ('1','2','3','3','15-1-21');
+insert into factura
+values ('2','1','4','2','15-1-21');
+insert into factura
+values ('3','4','5','1','15-1-21');
+insert into factura
+values ('4','3','1','0','15-1-21');
+insert into factura
+values ('5','5','2','5','15-1-21');
+select * from factura;
+
+/*DATOS CATEGORIA*/
+insert into categoria
+values ('11','Mesones','--');
+insert into categoria
+values ('12','Cajones','--');
+insert into categoria
+values ('13','Closet','--');
+insert into categoria
+values ('14','Cocinas','--');
+insert into categoria
+values ('15','Accesorios','--');
+
+/*DATOS DETALLE_FACTURA*/
+insert into detalle_factura
+values ('1','2','12','15000');
+insert into detalle_factura
+values ('2','3','14','1000');
+insert into detalle_factura
+values ('3','4','10','2000');
+insert into detalle_factura
+values ('4','1','45','11000');
+insert into detalle_factura
+values ('5','5','50','12000');
+select * from detalle_factura;
+
+/*DATOS TAMAÑO*/
+insert into tamaño
+values ('12','50cm');
+insert into tamaño
+values ('22','40cm');
+insert into tamaño
+values ('345','20cm');
+insert into tamaño
+values ('456','18cm');
+insert into tamaño
+values ('552','16cm');
+select * from tamaño;
+/*JOINS*/
+/*Joins hecho por Bayron*/
+
+select * from producto
+inner join empresa
+on producto.id_empresa = empresa.id;
+
+select * from producto
+inner join categoria
+on producto.id_categoria = categoria.id;
+
+select * from producto
+inner join tamaño
+on producto.id_tamaño = tamaño.id;
+
+select * from  detalle_factura
+inner join pedido
+on detalle_factura.id_pedido = pedido.id;
+
+select * from factura
+inner join cliente
+on factura.num_factura = cliente.Nombre
+where Direccion='Cll-30-j-30';
+
+select * from usuario
+inner join cliente
+on usuario.id = cliente.id
+where nombre = 'miguel';
+
+select * from producto
+inner join categoria
+on producto.id_categoria  = categoria.id
+where nomb_producto = 'Mesa' and producto.id = '1';
+
+select * from detalle_factura
+inner join pedido
+on detalle_factura.id_pedido = pedido.id
+where id_pedido = '1';
+
+select * from categoria
+join producto
+on categoria.id = producto.id_categoria;
+
+select * from inventario
+join producto
+on inventario.id_producto = producto.id
+join cliente
+on inventario.id_cliente = cliente.id
+where cliente.id = '3';
+
+
+
+
+

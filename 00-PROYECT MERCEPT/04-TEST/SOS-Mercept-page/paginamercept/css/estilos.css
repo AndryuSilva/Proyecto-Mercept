@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
+	body{
+		background: url(https://www.xtrafondos.com/wallpapers/resized/diseno-de-sala-de-estar-2547.jpg?s=large);
+		background-size: 100vw 100vh;
+		background-repeat: no-repeat;
+	}
+	.capa{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: rgba(13, 13, 14, 0.178);
+		z-index: -2;
+		top: 0;left: 0;
+	}
+	
+	#Bienvenido{
+		font-size: 45px;
+		color: rgba(255, 255, 255, 0.952);
+		width: 100%;
+		text-align: center;
+		margin: auto;
+		margin-top: 7%;
+	}
+	.header{
+		width: 100%;
+		height: 100px;
+		position: fixed;
+		top: 0;left: 0;
+	}
+	.container{
+		width: 90%;
+		max-width: 1200px;
+		margin: auto;
+	}
+	.container .btn-menu, .logo{
+		float: left;
+		line-height:100px;
+	}
+	.container .btn-menu label{
+		color: #fff;
+		font-size: 25px;
+		cursor: pointer;
+	}
+	.logo h1{
+		color: #fff;
+		font-weight: 400;
+		font-size: 22px;
+		margin-left: 10px;
+	}
+	.container .menu{
+		float: right;
+		line-height: 100px;
+	}
+	.container .menu a{
+		display: inline-block;
+		padding: 15px;
+		line-height: normal;
+		text-decoration: none;
+		color: #fff;
+		transition: all 0.3s ease;
+		border-bottom: 2px solid transparent;
+		font-size: 15px;
+		margin-right: 5px;
+	}
+	.container .menu a:hover{
+		border-bottom: 2px solid #c7c7c7;
+		padding-bottom: 5px;
+	}
+
+	#btn-menu{
+		display: none;
+	}
+	.container-menu{
+		position: absolute;
+		background: rgba(0,0,0,0.5);
+		width: 100%;
+		height: 100vh;
+		top: 0;left: 0;
+		transition: all 500ms ease;
+		opacity: 0;
+		visibility: hidden;
+	}
+	#btn-menu:checked ~ .container-menu{
+		opacity: 1;
+		visibility: visible;
+	}
+	.cont-menu{
+		width: 100%;
+		max-width: 250px;
+		background: #1c1c1c;
+		height: 100vh;
+		position: relative;
+		transition: all 500ms ease;
+		transform: translateX(-100%);
+	}
+	#btn-menu:checked ~ .container-menu .cont-menu{
+		transform: translateX(0%);
+	}
+	.cont-menu nav{
+		transform: translateY(15%);
+	}
+	.cont-menu nav a{
+		display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #c7c7c7;
+		border-left: 5px solid transparent;
+		transition: all 400ms ease;
+	}
+	.cont-menu nav a:hover{
+		border-left: 5px solid #c7c7c7;
+		background: #1f1f1f;
+	}
+	.cont-menu label{
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+	}
+
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+        font-family: Arial;
+    
+     }
+    wrap{
+        width:100%
+    }
+    .mega-menu{
+        width:100%;
+        height: 80px;
+         
+    }
+    .mega-menu ul{
+        width:100%;
+        height: 100%;
+        background: #333;
+        text-align: center;
+        line-height: 80px;
+        position: relative;
+         
+    }
+    .mega-menu ul li{
+        display: inline-block;
+        margin: 0 15px;
+        padding: 0 15px;
+         
+    }
+    .mega-menu ul li a{
+        text-decoration: none;
+        color:#fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-size:15px;
+        display: block;
+         
+    }
+    .mega-menu ul li:hover{
+        background: purple;
+    }
+    .mega-menu ul li :hover a{
+        color: red;
+    }
+    .sub-menu{
+        position: absolute;
+        background: green;
+        width:100%;
+        left:0;
+        top:60;
+        padding: 25px 15px;
+        display: flex;
+        justify-content: space-around;
+        line-height: 24px;
+        visibility: hidden;
+    }
+     
+    .sub-menu .col img{
+        width:250px;
+        height: 180px;
+        display: block;
+        border-radius: 10px;
+    }
+    .mega-menu ul li:hover .sub-menu{
+        visibility: visible;
+    }
+    .sub-menu p{
+        color:#fff;
+        margin-top: 15px;
+        font-size:14px;
+         
+         
+    }

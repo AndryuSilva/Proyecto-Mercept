@@ -1,0 +1,207 @@
+:root{
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+
+    --blanco:#e1e1e1;
+
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,*::before, *::after{
+    box-sizing: inherit;
+    }
+
+    body{
+        font-family: var(--fuenteParrafos);
+        font-size: 1.6rem;
+        line-height: 2;
+    }
+
+    /*Globales*/
+    .contenedor{
+        max-width: 120rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+    a{
+        text-decoration: none;
+    }
+    h1,h2,h3,h4{
+        font-family: var(--fuenteHeading);
+    }
+
+    h1{
+        font-size: 4.8rem;
+    }
+    h2{
+        font-size: 4rem;
+    }
+    h3{
+        font-size: 3.2rem;
+    }
+    h4{
+        font-size: 2.8rem;
+    }
+    img{
+        max-width: 100%;
+    }
+
+    /*Utilidades*/
+    .no-margin{
+        margin: 0;
+
+    }
+
+    .no-padding{
+        padding: 0;
+
+    }
+    .centrar-texto{
+        text-align: center;
+    }
+
+
+    /*HEADER*/
+    .header{
+        background-image: url(../img/toa-heftiba-FV3GConVSss-unsplash.jpg) ;
+        height: 40rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        
+    }
+    
+    @media(min-width:768px){
+        .barra{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+    }
+
+    .logo{
+        color:var(--blanco);}
+
+
+    .logo__nombre{
+        font-weight: 600;
+       color: rgb(3, 3, 3);
+       font-size: 4.5rem;
+       
+    
+    
+    }
+    .logo__bold{
+        color: rgb(10, 10, 10);
+        font-size: 2.5rem;
+        
+       
+       
+    }
+    
+    
+
+    /*Navegacion*/
+
+    @media (min-width:768px){
+        .navegacion{
+            display: flex;
+            gap: 15rem;
+        }
+    }
+
+    .navegacion__enlace{
+       gap: 20rem;
+       font-weight: 600;
+
+        
+        text-align: center;
+        font-size: 1.8rem;
+        color:rgb(14, 14, 14)
+        
+    }
+    @media (min-width:768px){
+        .navegacion{
+            display: flex;
+            gap: 2rem;
+        }
+    }
+
+    .header__texto{
+        text-align: center;
+        margin-top: 5rem;
+        color:#111111
+       
+    }
+    @media(min-width:768px){
+        .header__texto{
+            margin-top: 5rem;
+        }
+    }
+
+    @media(min-width:768px){
+        .barra{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+    }
+
+
+    /*formulario*/
+
+    .contacto-bg{
+        background-image: url(../img/pexels-mark-mccammon-2724749.jpg);
+        height: 40rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:  center bottom;
+        
+    }
+    .formulario{
+        background-color:white;
+        margin: -5rem auto 0 auto;
+        width: 95%;
+        padding: 5rem;
+    }
+    .campo{
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 2rem;
+
+    }
+    .campo__label{
+    flex: 0 0 9rem;
+    text-align: right;
+    }
+    .campo__field{
+    flex: 1;
+    border: 1px solid rgb(236, 230, 230);
+    }
+    .campo__field--textarea{
+        height: 20rem;
+    
+    
+    }
+
+    /*boton*/
+    .boton{
+        display: block;
+        font-family:var(--fuenteHeading);
+        color:#111111;
+        text-align: center;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        border: none;
+    }
+    .boton:hover{
+        cursor: pointer;
+    }
