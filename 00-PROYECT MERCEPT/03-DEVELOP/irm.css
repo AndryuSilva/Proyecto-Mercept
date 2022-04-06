@@ -1,0 +1,14 @@
+.ok {
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+    background-color: #46a2fd;
+    color: #fff
+}
+.bad {
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+    background-color: #a22;
+    color: #fff
+}
